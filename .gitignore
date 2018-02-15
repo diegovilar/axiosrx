@@ -1,0 +1,7 @@
+/node_modules
+/build
+/__test__
+/.nyc_output
+/coverage
+yarn-error.log
+desktop.ini

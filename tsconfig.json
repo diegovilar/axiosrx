@@ -1,0 +1,46 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "downlevelIteration": true,
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true,
+        "outDir": "./build",
+        "importHelpers": true,
+        "noEmitHelpers": true,
+        "esModuleInterop": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "noEmitOnError": true,
+        "pretty": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": false, // senao dá erro no rxjs
+        "alwaysStrict": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "newLine": "LF",
+        "charset": "utf-8",
+        "lib": [
+            "es5",
+            "es2015.promise",
+            "dom" // senao dá erro no rxjs
+        ],
+        "plugins": [
+            {
+                "name": "tslint-language-service",
+                "alwaysShowRuleFailuresAsWarnings": true,
+                "ignoreDefinitionFiles": true
+                //"configFile": "./tslint.json",
+                //"disableNoUnusedVariableRule": false
+            }
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "test/**/*.ts"
+    ]
+}

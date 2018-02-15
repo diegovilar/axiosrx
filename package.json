@@ -1,0 +1,61 @@
+{
+  "name": "axios-rx",
+  "version": "0.0.0",
+  "description": "Axios with Rx.Observables",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=4.0.0",
+    "yarn": ">=1.0.0"
+  },
+  "main": "build/es5/index.js",
+  "module": "build/es6/index.js",
+  "browser": "build/browser/axios-rx.bundle.umd.js",
+  "files": [
+    "build",
+    "src",
+    "yarn.lock"
+  ],
+  "scripts": {
+    "prepublishOnly": "yarn run build && yarn run test",
+    "clean": "rimraf build __test__",
+    "build": "concurrently -n \"es5,es6,esm/browser\" -c \"green,cyan,blue\" \"yarn run build-es5\" \"yarn run build-es6\" \"yarn run build-esm+browser\"",
+    "build-es5": "rimraf build/es5 && tsc -p src/tsconfig.es5.json",
+    "build-es6": "rimraf build/es6 && tsc -p src/tsconfig.es6.json",
+    "build-esm": "rimraf build/esm && tsc -p src/tsconfig.esm.json",
+    "build-esm+browser": "yarn run build-esm && rimraf build/browser && rollup -c && yarn run _mapcat-browser",
+    "_mapcat-browser": "mapcat node_modules/es6-promise/dist/es6-promise.auto.min.map node_modules/axios/dist/axios.min.map build/browser/axios-rx.umd.js.map -m build/browser/axios-rx.bundle.umd.js.map -j build/browser/axios-rx.bundle.umd.js",
+    "build-test": "rimraf __test__ && tsc -p test/tsconfig.json",
+    "test": "yarn run build-test && mocha --opts mocha.opts",
+    "test+coverage": "rimraf coverage && nyc --nycrc-path nyc.json yarn test"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.48",
+    "chai": "^4.1.2",
+    "concurrently": "^3.5.1",
+    "mapcat": "^0.4.0",
+    "mocha": "^5.0.1",
+    "mocha-typescript": "^1.1.12",
+    "nyc": "^11.4.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.55.5",
+    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.0.2",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-uglify": "^3.0.0",
+    "source-map-support": "^0.5.3",
+    "tslint": "^5.9.1",
+    "tslint-language-service": "^0.9.8",
+    "typescript": "2.7.2-dev.20180207",
+    "uglify-js": "^3.3.10"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "es6-promise": "^4.2.4",
+    "rxjs": "^5.5.6",
+    "tslib": "^1.9.0"
+  }
+}

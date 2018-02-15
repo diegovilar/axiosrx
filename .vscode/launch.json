@@ -1,0 +1,59 @@
+{
+  // Use IntelliSense to learn about possible Node.js debug attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug tests",
+      "preLaunchTask": "build-test",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "--opts",
+        "mocha.opts",
+      ],
+      "cwd": "${workspaceRoot}",
+      "outFiles": [
+        "${workspaceRoot}/__tests__/**/*.js"
+      ],
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "internalConsoleOptions": "openOnSessionStart",
+      "sourceMaps": true,
+      "showAsyncStacks": true,
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Process",
+      "processId": "${command:PickProcess}",
+      "port": 5858,
+      "outFiles": [
+        "${workspaceRoot}/build/**/*.js",
+        "${workspaceRoot}/__tests__/**/*.js"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "sourceMaps": true,
+      "showAsyncStacks": true,
+      "stopOnEntry": true,
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Port",
+      "address": "localhost",
+      "port": 5858,
+      "outFiles": [
+        "${workspaceRoot}/build/**/*.js",
+        "${workspaceRoot}/__tests__/**/*.js"
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "sourceMaps": true,
+      "showAsyncStacks": true,
+      "stopOnEntry": true
+    }
+  ]
+}
