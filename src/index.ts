@@ -1,2 +1,1 @@
-export * from "./axios-rx";
-export * from "./utils/merge";
+export * from "./axiosrx";

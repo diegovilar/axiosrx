@@ -1,57 +1,68 @@
-export { AxiosRequestConfig, AxiosResponse, AxiosInterceptorManager } from "axios";
-export { Observable } from "rxjs/Observable";
+export * from "axios";
 
-import axios from "axios";
-import { AxiosError, AxiosInstance, AxiosPromise } from "axios";
+import { AxiosError, AxiosInstance, AxiosPromise, CancelStatic, CancelTokenStatic } from "axios";
 import { AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse } from "axios";
+
+import axiosStatic from "axios";
 import { Observable } from "rxjs/Observable";
 import { merge } from "./utils/merge";
 
 export class AxiosRx {
 
-    public readonly defaults: AxiosRequestConfig;
+    public defaults: AxiosRequestConfig;
 
-    public readonly interceptors: {
-        readonly request: AxiosInterceptorManager<AxiosRequestConfig>;
-        readonly response: AxiosInterceptorManager<AxiosResponse>;
+    public interceptors: {
+        request: AxiosInterceptorManager<AxiosRequestConfig>;
+        response: AxiosInterceptorManager<AxiosResponse>;
     };
 
-    private axios: AxiosInstance;
+    public cancel = axiosStatic.Cancel;
 
-    // TODO: implementar
-    // CancelToken
-    // Cancel
-    // isCancel
-    // all
-    // spread
+    public isCancel = axiosStatic.isCancel;
+
+    public CancelToken = axiosStatic.CancelToken;
+
+    private axiosInstance: AxiosInstance;
 
     public constructor(private config?: AxiosRequestConfig) {
 
-        this.axios = axios.create(config);
-        this.defaults = this.axios.defaults;
-        this.interceptors = this.axios.interceptors;
+        this.axiosInstance = axiosStatic.create(config);
+        this.defaults = this.axiosInstance.defaults;
+        this.interceptors = this.axiosInstance.interceptors;
 
     }
 
     public request<T>(config: AxiosRequestConfig) {
 
-        return new Observable<AxiosResponse<T>>((subscriber) => {
+        return new Observable<AxiosResponse<T>>((observer) => {
 
-            const source = axios.CancelToken.source();
+            const source = axiosStatic.CancelToken.source();
             merge(config, { cancelToken: source.token });
-            const request = this.axios.request<T>(config);
+            const request = this.axiosInstance.request<T>(config);
 
             request.then((response) => {
-                subscriber.next(response);
-                subscriber.complete();
+
+                if (!axiosStatic.isCancel(response)) {
+                    observer.next(response);
+                }
+
+                observer.complete();
+
             }).catch((error: Error | AxiosError) => {
-                subscriber.error(error);
-                subscriber.complete();
+
+                if (!axiosStatic.isCancel(error)) {
+                    observer.error(error);
+                }
+
+                observer.complete();
+
             });
 
             return function unsubscribe() {
+
                 // TODO: Should we cancel?
                 source.cancel("Canceled by [Observable].unsubscribe()");
+
             };
 
         });

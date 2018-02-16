@@ -16,16 +16,17 @@ export default [
                 "axios": "axios"
             },
         }, */
-        {
-            name: 'axiosrx',
-            file: "build/browser/axios-rx.umd.js",
-            format: 'umd',
-            sourcemap: true,
-            globals: {
-                "axios": "axios"
-            },
-        }],
-        external: ['axios'],
+            {
+                name: 'axiosrx',
+                file: "build/browser/axios-rx.umd.js",
+                format: 'umd',
+                sourcemap: true,
+                globals: {
+                    "axios": "axios",
+                    "rxjs/Observable": "Rx.Observable"
+                },
+            }],
+        external: ['axios', 'rxjs/Observable'],
         plugins: [
             resolve({
                 jsnext: true,
