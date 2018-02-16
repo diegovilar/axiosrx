@@ -36,7 +36,7 @@ export default [
             sourcemaps(),
             commonjs(),
             json(),
-            uglify(),
+            // uglify(),
         ]
     }
 ];

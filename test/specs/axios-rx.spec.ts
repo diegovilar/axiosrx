@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { suite, test, timeout } from "mocha-typescript";
-import { AxiosRx } from "../../src/axios-rx";
+import { AxiosRx } from "../../src";
 
 const TEST_URL = "http://www.google.com";
 

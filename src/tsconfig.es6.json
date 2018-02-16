@@ -1,9 +1,11 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "target": "es6",
-        "module": "es6",
-        "outDir": "../build/es6",
-        "downlevelIteration": false
-    }
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "outDir": "../build/es6",
+    "downlevelIteration": false,
+    "noEmitHelpers": true,
+    "importHelpers": true
+  }
 }

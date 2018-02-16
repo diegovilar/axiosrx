@@ -1,9 +1,11 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "target": "es5",
-        "module": "es6",
-        "outDir": "../build/esm",
-        "downlevelIteration": true
-    }
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "outDir": "../build/esm",
+    "downlevelIteration": true,
+    "noEmitHelpers": true,
+    "importHelpers": true
+  }
 }
