@@ -7,7 +7,7 @@ import uglify from 'rollup-plugin-uglify';
 export default [
     {
         input: 'build/esm/index.js',
-        output: [{
+        output: [/* {
             name: 'axiosrx',
             file: "build/browser/axios-rx.iife.js",
             format: 'iife',
@@ -15,7 +15,7 @@ export default [
             globals: {
                 "axios": "axios"
             },
-        },
+        }, */
         {
             name: 'axiosrx',
             file: "build/browser/axios-rx.umd.js",
