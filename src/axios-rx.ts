@@ -50,6 +50,7 @@ export class AxiosRx {
             });
 
             return function unsubscribe() {
+                // TODO: Should we cancel?
                 source.cancel("Canceled by [Observable].unsubscribe()");
             };
 
