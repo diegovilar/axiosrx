@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <!-- <script src="../node_modules/es6-promise/dist/es6-promise.auto.js"></script> -->
+    <!-- <script src="../node_modules/axios/dist/axios.js"></script> -->
+    <!-- <script src="../node_modules/rxjs/bundles/Rx.js"></script> -->
+    <!-- <script src="../build/browser/axios-rx.bundle.js"></script> -->
+    <script src="../build/browser/axios-rx.bundle.min.js"></script>
+    <script>
+        debugger;
+        var api = new axiosrx.AxiosRx();
+        var data = api.get(location.href);
+        var sub = data.subscribe(
+            function (data) {
+                console.log(data)
+            },
+            function (error) {
+                console.error(error)
+            },
+            function () {
+                sub.unsubscribe();
+            }
+        );
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
