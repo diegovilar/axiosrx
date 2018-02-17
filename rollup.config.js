@@ -23,10 +23,10 @@ export default [
                 sourcemap: true,
                 globals: {
                     "axios": "axios",
-                    "rxjs/Observable": "Rx.Observable"
+                    "rxjs": "Rx"
                 },
             }],
-        external: ['axios', 'rxjs/Observable'],
+        external: ['axios', 'rxjs'],
         plugins: [
             resolve({
                 jsnext: true,

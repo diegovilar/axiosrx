@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { suite, test, timeout } from "mocha-typescript";
 import { AxiosRx } from "../../src/axiosrx";
 
-const TEST_URL = "http://intranet.tre-se.gov.br";
+const TEST_URL = "http://www.google.com.br";
 
 @suite("AxiosRx", timeout(10000))
 class SuiteApi1 {

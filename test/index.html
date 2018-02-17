@@ -5,9 +5,9 @@
     <!-- <script src="../node_modules/axios/dist/axios.js"></script> -->
     <!-- <script src="../node_modules/rxjs/bundles/Rx.js"></script> -->
     <!-- <script src="../build/browser/axios-rx.bundle.js"></script> -->
+    <script src="../node_modules/rxjs/bundles/Rx.min.js"></script>
     <script src="../build/browser/axios-rx.bundle.min.js"></script>
     <script>
-        debugger;
         var api = new axiosrx.AxiosRx();
         var data = api.get(location.href);
         var sub = data.subscribe(

@@ -1,9 +1,10 @@
 {
-  "name": "axiosrx",
+  "name": "@diegovilar/axiosrx",
   "version": "0.0.0-alpha.3",
   "description": "Axios with Rx.Observables",
   "license": "MIT",
-  "private": true,
+  "author": "Diego Vilar <diegovilar@gmail.com> (https://github.com/diegovilar)",
+  "repository": "github:user/repo",
   "engines": {
     "node": ">=8.0.0",
     "npm": ">=4.0.0",
@@ -17,12 +18,11 @@
   "browser": "build/browser/axios-rx.bundle.umd.js",
   "files": [
     "build",
-    "src",
-    "yarn.lock"
+    "src"
   ],
   "scripts": {
     "prepublishOnly": "yarn run build && yarn run test",
-    "clean": "rimraf build __test__",
+    "clean": "rimraf build __test__ coverage .nyc_output",
     "build": "concurrently -n \"es5,es6,esm/browser\" -c \"green,cyan,blue\" \"yarn run build-es5\" \"yarn run build-es6\" \"yarn run build-esm+browser\"",
     "build-es5": "rimraf build/es5 && tsc -p src/tsconfig.es5.json",
     "build-es6": "rimraf build/es6 && tsc -p src/tsconfig.es6.json",
