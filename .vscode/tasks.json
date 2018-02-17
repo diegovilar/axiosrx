@@ -73,7 +73,7 @@
     {
       "identifier": "build-esm+browser",
       "label": "Build ESM + BROWSER",
-      "command": "yarn run build-esm+browser",
+      "command": "yarn run build-esm+webpack",
       "type": "shell",
       "group": "build",
       "presentation": {
