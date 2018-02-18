@@ -16,7 +16,7 @@ export {
     CancelStatic,
     CancelToken,
     CancelTokenSource,
-    CancelTokenStatic
+    CancelTokenStatic,
 } from "axios";
 
 import { AxiosError, AxiosInstance, AxiosPromise, CancelStatic, CancelTokenStatic } from "axios";

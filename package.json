@@ -7,7 +7,7 @@
   "repository": "github:user/repo",
   "engines": {
     "node": ">=8.0.0",
-    "npm": ">=4.0.0",
+    "npm": ">=5.0.0",
     "yarn": ">=1.0.0"
   },
   "main": "build/es5/index.js",
@@ -32,9 +32,10 @@
     "_bundle-rollup+deps": "mapcat node_modules/es6-promise/dist/es6-promise.auto.map node_modules/axios/dist/axios.map build/browser/axios-rx.umd.js.map -m build/browser/axios-rx.bundle.js.map -j build/browser/axios-rx.bundle.js",
     "_compress-rollup+deps": "uglifyjs build/browser/axios-rx.bundle.js -cm -o build/browser/axios-rx.bundle.min.js --source-map \"content='build/browser/axios-rx.bundle.js.map',url='axios-rx.bundle.min.js.map'\"",
     "_compress-rollup": "uglifyjs build/browser/axios-rx.umd.js -cm -o build/browser/axios-rx.umd.min.js --source-map \"content='build/browser/axios-rx.umd.js.map',url='axios-rx.umd.min.js.map'\"",
-    "build-test": "rimraf __test__ && tsc -p test/tsconfig.json",
+    "build-test": "rimraf __test__ && tsc -p test/tsconfig.test.json",
     "test": "yarn run build-test && mocha --opts mocha.opts",
-    "test+coverage": "rimraf coverage && nyc --nycrc-path nyc.json yarn test"
+    "test+coverage": "rimraf coverage && nyc --nycrc-path nyc.json yarn run test",
+    "tslint": "tslint -p src/tsconfig.es5.json -c src/tslint.json --fix"
   },
   "devDependencies": {
     "@types/chai": "^4.1.2",
@@ -44,7 +45,7 @@
     "mapcat": "diegovilar/mapcat",
     "mocha": "^5.0.1",
     "mocha-typescript": "^1.1.12",
-    "nyc": "^11.4.1",
+    "nyc": "~11.5.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.55.5",
     "rollup-plugin-commonjs": "^8.3.0",
@@ -56,8 +57,7 @@
     "source-map-loader": "^0.2.3",
     "source-map-support": "^0.5.3",
     "tslint": "^5.9.1",
-    "tslint-language-service": "^0.9.8",
-    "typescript": "2.7.2-dev.20180207",
+    "typescript": "~2.6.2",
     "uglify-js": "^3.3.10",
     "uglifyjs-webpack-plugin": "^1.2.0",
     "webpack": "^3.11.0"

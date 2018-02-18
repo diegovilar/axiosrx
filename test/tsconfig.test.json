@@ -1,12 +1,17 @@
 {
+  "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
     "outDir": "../__test__",
     "downlevelIteration": true,
-    "strictPropertyInitialization": false,
     "noEmitHelpers": false,
-    "importHelpers": false
+    "importHelpers": false,
+    "lib": [
+      "es5",
+      "es2015.promise",
+      "dom"
+    ]
   }
 }
