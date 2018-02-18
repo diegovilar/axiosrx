@@ -5,7 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const sharedConfig = {
     entry: './build/esm/index.js',
     output: {
-        path: path.resolve(__dirname, 'build/webpack'),
+        path: path.resolve(__dirname, 'build/bundles'),
         library: "axiosrx",
         libraryTarget: "umd"
     },

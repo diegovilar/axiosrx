@@ -2,6 +2,9 @@
   "include": [
     "__test__/src/**/*.js"
   ],
+  "exclude": [
+    "__test__/src/utils/*.js"
+  ],
   "extension": [
     ".js"
   ],
