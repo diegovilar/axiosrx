@@ -26,7 +26,8 @@
     "**/desktop.ini": true,
     "__test__": true,
     "coverage": true,
-    ".nyc_output": true
+    ".nyc_output": true,
+    ".awcache": true
   },
   "search.exclude": {
     "build": true
