@@ -4,7 +4,7 @@
   "description": "Axios with Rx.Observables",
   "license": "MIT",
   "author": "Diego Vilar <diegovilar@gmail.com> (https://github.com/diegovilar)",
-  "repository": "github:Diego Vilar/axiosrx",
+  "repository": "github:diegovilar/axiosrx",
   "engines": {
     "node": ">=8.0.0",
     "npm": ">=5.0.0",
@@ -22,11 +22,11 @@
   "scripts": {
     "prepublishOnly": "yarn run build && yarn run test",
     "clean": "rimraf build __test__ coverage .nyc_output .awcache node_modules/.cache/hard-source",
-    "build": "concurrently -n \"es5,es6,esm,bundles\" -c \"green,cyan,blue,magenta\" \"yarn run build-es5\" \"yarn run build-es6\" \"yarn run build-esm\"  \"yarn run build-bundles\"",
+    "build": "concurrently -n \"es5,es6,esm,browser\" -c \"green,cyan,blue,magenta\" \"yarn run build-es5\" \"yarn run build-es6\" \"yarn run build-esm\"  \"yarn run build-browser\"",
     "build-es5": "rimraf build/es5 && tsc -p src/tsconfig.es5.json",
     "build-es6": "rimraf build/es6 && tsc -p src/tsconfig.es6.json",
     "build-esm": "rimraf build/esm && tsc -p src/tsconfig.esm.json",
-    "build-bundles": "rimraf build/bundles && webpack --config webpack.config.js",
+    "build-browser": "rimraf build/browser && webpack --config webpack.config.js",
     "build-test": "rimraf __test__ && tsc -p test/tsconfig.test.json",
     "test": "yarn run build-test && mocha --opts mocha.opts",
     "test+coverage": "rimraf coverage && nyc --nycrc-path nyc.json yarn run test",
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@types/chai": "^4.1.2",
     "@types/mocha": "^2.2.48",
+    "@types/sinon": "^4.1.3",
     "awesome-typescript-loader": "^3.4.1",
     "chai": "^4.1.2",
     "clone": "^2.1.1",
@@ -45,6 +46,7 @@
     "nyc": "~11.5.0",
     "rimraf": "^2.6.2",
     "rxjs": "^5.5.6",
+    "sinon": "^4.3.0",
     "source-map-loader": "^0.2.3",
     "source-map-support": "^0.5.3",
     "ts-loader": "^3.5.0",

@@ -71,9 +71,9 @@
       ]
     },
     {
-      "identifier": "build-bundles",
-      "label": "Build bundles",
-      "command": "yarn run build-bundles",
+      "identifier": "build-browser",
+      "label": "Build browser",
+      "command": "yarn run build-browser",
       "type": "shell",
       "group": "build",
       "presentation": {
