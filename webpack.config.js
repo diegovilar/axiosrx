@@ -1,12 +1,16 @@
-const clone = require('clone');
-const path = require('path');
+const clone = require("clone");
+const path = require("path");
 const webpack = require("webpack");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const { CheckerPlugin } = require('awesome-typescript-loader');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const { CheckerPlugin } = require("awesome-typescript-loader");
 
 const TS_CONFIG_FILE = "./src/tsconfig.bundles.json";
+const ENTRY = "./src/index.ts";
+const LIBRARY_NAME = "axiosrx";
+const OUTPUT_PATH = path.resolve(__dirname, "build/browser");
+const OUTPUT_FILENAME = "axiosrx";
 
 function cloneConfig(source) {
     const result = {};
@@ -19,10 +23,10 @@ function cloneConfig(source) {
 }
 
 const sharedConfig = {
-    entry: './src/index.ts',
+    entry: ENTRY,
     output: {
-        path: path.resolve(__dirname, 'build/browser'),
-        library: "axiosrx",
+        path: OUTPUT_PATH,
+        library: LIBRARY_NAME,
         libraryTarget: "umd"
     },
     devtool: "source-map",
@@ -30,6 +34,7 @@ const sharedConfig = {
         rules: [
             {
                 test: /\.ts$/,
+                exclude: /node_modules/,
                 use: [{
                     loader: "awesome-typescript-loader",
                     options: {
@@ -45,10 +50,21 @@ const sharedConfig = {
         ]
     },
     resolve: {
-        extensions: ['.ts', '.js']
+        extensions: [".ts", ".js"]
     },
     externals: {
-        rxjs: "Rx"
+        "rxjs": {
+            commonjs: "rxjs",
+            commonjs2: "rxjs",
+            amd: "rxjs",
+            root: "Rx"
+        },
+        "rxjs/operators": {
+            commonjs: "rxjs/operators",
+            commonjs2: "rxjs/operators",
+            amd: "rxjs/operators",
+            root: "Rx.operators"
+        }
     },
     plugins: [
         new CheckerPlugin(),
@@ -61,12 +77,12 @@ const sharedConfig = {
 
 // Lib
 const libConfig = cloneConfig(sharedConfig);
-libConfig.output.filename = 'axiosrx.js';
-libConfig.externals.axios = "axios";
+libConfig.output.filename = `${OUTPUT_FILENAME}.js`;
+libConfig.externals["axios"] = "axios";
 
 // Lib min
 const libMinConfig = cloneConfig(libConfig);
-libMinConfig.output.filename = 'axiosrx.min.js';
+libMinConfig.output.filename = `${OUTPUT_FILENAME}.min.js`;
 libMinConfig.plugins.push(
     new UglifyJsPlugin({
         sourceMap: true
@@ -75,11 +91,11 @@ libMinConfig.plugins.push(
 
 // Bundle
 const bundleConfig = cloneConfig(sharedConfig);
-bundleConfig.output.filename = 'axiosrx.bundle.js';
+bundleConfig.output.filename = `${OUTPUT_FILENAME}.bundle.js`;
 
 // Bundle min
 const bundleMinConfig = cloneConfig(bundleConfig);
-bundleMinConfig.output.filename = 'axiosrx.bundle.min.js';
+bundleMinConfig.output.filename = `${OUTPUT_FILENAME}.bundle.min.js`;
 bundleMinConfig.plugins.push(
     new UglifyJsPlugin({
         sourceMap: true

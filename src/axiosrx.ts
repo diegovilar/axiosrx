@@ -24,7 +24,7 @@ import { AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse } from "axio
 
 import axiosStatic from "axios";
 import { Observable } from "rxjs";
-import { merge } from "./utils/merge";
+import { merge } from "./utils";
 
 export class AxiosRx {
 

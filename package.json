@@ -1,6 +1,6 @@
 {
   "name": "@diegovilar/axiosrx",
-  "version": "0.0.0-alpha.4",
+  "version": "0.1.0-rc.1",
   "description": "Axios with Rx.Observables",
   "license": "MIT",
   "author": "Diego Vilar <diegovilar@gmail.com> (https://github.com/diegovilar)",
@@ -14,7 +14,7 @@
   "module": "build/es6/index.js",
   "jsnext:main": "build/es6/index.js",
   "typings": "build/es5/index.d.ts",
-  "browser": "build/browser/axiosrx.bundle.min.js",
+  "browser": "build/browser/axiosrx.bundle.js",
   "files": [
     "build",
     "src"
@@ -58,7 +58,6 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "es6-promise": "^4.2.4",
     "tslib": "^1.9.0"
   },
   "peerDependencies": {
