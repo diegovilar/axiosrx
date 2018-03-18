@@ -4,17 +4,15 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "../build/es5",
+    "outDir": "../__test__",
     "downlevelIteration": true,
-    "noEmitHelpers": true,
-    "importHelpers": true,
+    "noEmitHelpers": false,
+    "importHelpers": false,
+    "strictPropertyInitialization": false,
     "lib": [
       "es5",
       "es2015.promise",
       "dom"
     ]
-  },
-  "exclude": [
-    "../test"
-  ]
+  }
 }

@@ -1,24 +1,16 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "outDir": "./build",
-    "target": "es5",
-    "module": "es2015",
-    "downlevelIteration": true,
+    "noEmit": true,
+    "target": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "declaration": true,
-    "sourceMap": true,
-    "inlineSources": true,
-    "importHelpers": true,
-    "noEmitHelpers": true,
     "strict": true,
     "noImplicitAny": true,
-    "noEmitOnError": true,
-    "pretty": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "esModuleInterop": true,
-    "strictFunctionTypes": true, // usar na IDE, mas desabilitar para build porque rxjs ainda nao está pronto para isso
+    "strictFunctionTypes": true,
     "alwaysStrict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -29,12 +21,7 @@
     "charset": "utf-8",
     "lib": [
       "es2015",
-      "es2015.promise",
-      "dom"
+      "es2015.promise"
     ]
-  },
-  "include": [
-    "src/**/*.ts",
-    "test/**/*.ts"
-  ]
+  }
 }

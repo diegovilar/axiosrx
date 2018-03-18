@@ -6,10 +6,10 @@ const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
 
-const TS_CONFIG_FILE = "./src/tsconfig.bundles.json";
+const TS_CONFIG_FILE = "./tsconfig.bundles.json";
 const ENTRY = "./src/index.ts";
 const LIBRARY_NAME = "axiosrx";
-const OUTPUT_PATH = path.resolve(__dirname, "build/browser");
+const OUTPUT_PATH = path.resolve(__dirname, "build/bundles");
 const OUTPUT_FILENAME = "axiosrx";
 
 function cloneConfig(source) {
@@ -77,12 +77,12 @@ const sharedConfig = {
 
 // Lib
 const libConfig = cloneConfig(sharedConfig);
-libConfig.output.filename = `${OUTPUT_FILENAME}.js`;
+libConfig.output.filename = `${OUTPUT_FILENAME}.umd.js`;
 libConfig.externals["axios"] = "axios";
 
 // Lib min
 const libMinConfig = cloneConfig(libConfig);
-libMinConfig.output.filename = `${OUTPUT_FILENAME}.min.js`;
+libMinConfig.output.filename = `${OUTPUT_FILENAME}.umd.min.js`;
 libMinConfig.plugins.push(
     new UglifyJsPlugin({
         sourceMap: true
@@ -91,11 +91,11 @@ libMinConfig.plugins.push(
 
 // Bundle
 const bundleConfig = cloneConfig(sharedConfig);
-bundleConfig.output.filename = `${OUTPUT_FILENAME}.bundle.js`;
+bundleConfig.output.filename = `${OUTPUT_FILENAME}.withdeps.umd.js`;
 
 // Bundle min
 const bundleMinConfig = cloneConfig(bundleConfig);
-bundleMinConfig.output.filename = `${OUTPUT_FILENAME}.bundle.min.js`;
+bundleMinConfig.output.filename = `${OUTPUT_FILENAME}.withdeps.umd.min.js`;
 bundleMinConfig.plugins.push(
     new UglifyJsPlugin({
         sourceMap: true
