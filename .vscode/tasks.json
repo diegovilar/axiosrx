@@ -40,7 +40,7 @@
     },
     {
       "identifier": "clean",
-      "label": "Clean previous build and caches",
+      "label": "Clean",
       "command": "yarn run clean",
       "type": "shell",
       "presentation": {

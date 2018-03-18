@@ -4,9 +4,16 @@
     "tslint:recommended"
   ],
   "rulesDirectory": [
-    "../node_modules/codelyzer"
+    "node_modules/codelyzer"
   ],
-  "jsRules": {},
+  "linterOptions": {
+    "exclude": [
+      "./*.ts",
+      "**/*.d.ts",
+      "test/**/*",
+      "scripts/**/*"
+    ]
+  },
   "rules": {
     "import-blacklist": {
       "severity": "error",
@@ -17,9 +24,5 @@
       ]
     }
   },
-  "linterOptions": {
-    "exclude": [
-      "**/*.d.ts"
-    ]
-  }
+  "jsRules": {}
 }
