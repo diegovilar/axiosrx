@@ -17,6 +17,8 @@ function makePackageJson() {
     delete pkgObject.private;
     delete pkgObject.devDependencies;
     delete pkgObject.scripts;
+    delete pkgObject.engines.yarn;
+    delete pkgObject.engines.npm;
 
     fs.writeFileSync(destPackageFile, JSON.stringify(pkgObject, null, 4), { encoding: "utf8" });
     console.log(`Wrote ${destPackageFile}`);

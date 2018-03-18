@@ -18,7 +18,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "esModuleInterop": true,
-    "strictFunctionTypes": true, // usar na IDE, mas desabilitar para build porque rxjs ainda nao está pronto para isso
+    "strictFunctionTypes": true, // use on IDE, but disable for builds otherwise many packages (ie. rxjs) won't work
     "alwaysStrict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,

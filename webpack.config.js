@@ -1,16 +1,29 @@
+const project = require("./package.json");
 const clone = require("clone");
 const path = require("path");
 const webpack = require("webpack");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-const { CheckerPlugin } = require("awesome-typescript-loader");
+const {
+    CheckerPlugin
+} = require("awesome-typescript-loader");
 
 const TS_CONFIG_FILE = "./tsconfig.bundles.json";
 const ENTRY = "./src/index.ts";
-const LIBRARY_NAME = "axiosrx";
 const OUTPUT_PATH = path.resolve(__dirname, "build/bundles");
-const OUTPUT_FILENAME = "axiosrx";
+
+const LIBRARY_NAME = project.name.replace(/^@[^\/]+\//g, "").replace(/\//g, "_").toLowerCase();
+const OUTPUT_FILENAME = "lib";
+
+const libExternals = [
+    externalizeRxjs,
+    "axios"
+];
+
+const libWithDepsExternals = [
+    externalizeRxjs
+];
 
 function cloneConfig(source) {
     const result = {};
@@ -22,6 +35,28 @@ function cloneConfig(source) {
     return result;
 }
 
+function externalizeRxjs(context, request, callback) {
+
+    const match = /^rxjs(?:$|\/$|\/(.+))/.exec(request);
+
+    if (match) {
+        let root = "Rx";
+
+        if (match[1]) {
+            root += "." + match[1].replace(/\//g, ".");
+        }
+
+        return callback(null, {
+            commonjs: request,
+            commonjs2: request,
+            amd: request,
+            root: root
+        });
+    }
+
+    callback();
+}
+
 const sharedConfig = {
     entry: ENTRY,
     output: {
@@ -31,40 +66,24 @@ const sharedConfig = {
     },
     devtool: "source-map",
     module: {
-        rules: [
-            {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                use: [{
-                    loader: "awesome-typescript-loader",
-                    options: {
-                        configFileName: TS_CONFIG_FILE,
-                        useCache: true
-                    }
-                }]
-            }, {
-                test: /\.js$/,
-                use: ["source-map-loader"],
-                enforce: "pre"
-            }
-        ]
+        rules: [{
+            test: /\.ts$/,
+            exclude: /node_modules/,
+            use: [{
+                loader: "awesome-typescript-loader",
+                options: {
+                    configFileName: TS_CONFIG_FILE,
+                    useCache: true
+                }
+            }]
+        }, {
+            test: /\.js$/,
+            use: ["source-map-loader"],
+            enforce: "pre"
+        }]
     },
     resolve: {
         extensions: [".ts", ".js"]
-    },
-    externals: {
-        "rxjs": {
-            commonjs: "rxjs",
-            commonjs2: "rxjs",
-            amd: "rxjs",
-            root: "Rx"
-        },
-        "rxjs/operators": {
-            commonjs: "rxjs/operators",
-            commonjs2: "rxjs/operators",
-            amd: "rxjs/operators",
-            root: "Rx.operators"
-        }
     },
     plugins: [
         new CheckerPlugin(),
@@ -78,7 +97,7 @@ const sharedConfig = {
 // Lib
 const libConfig = cloneConfig(sharedConfig);
 libConfig.output.filename = `${OUTPUT_FILENAME}.umd.js`;
-libConfig.externals["axios"] = "axios";
+libConfig.externals = libExternals;
 
 // Lib min
 const libMinConfig = cloneConfig(libConfig);
@@ -90,13 +109,14 @@ libMinConfig.plugins.push(
 );
 
 // Bundle
-const bundleConfig = cloneConfig(sharedConfig);
-bundleConfig.output.filename = `${OUTPUT_FILENAME}.withdeps.umd.js`;
+const libWithDepsConfig = cloneConfig(sharedConfig);
+libWithDepsConfig.output.filename = `${OUTPUT_FILENAME}.withdeps.umd.js`;
+libWithDepsConfig.externals = libWithDepsExternals;
 
 // Bundle min
-const bundleMinConfig = cloneConfig(bundleConfig);
-bundleMinConfig.output.filename = `${OUTPUT_FILENAME}.withdeps.umd.min.js`;
-bundleMinConfig.plugins.push(
+const libWithDepsMinConfig = cloneConfig(libWithDepsConfig);
+libWithDepsMinConfig.output.filename = `${OUTPUT_FILENAME}.withdeps.umd.min.js`;
+libWithDepsMinConfig.plugins.push(
     new UglifyJsPlugin({
         sourceMap: true
     })
@@ -105,6 +125,6 @@ bundleMinConfig.plugins.push(
 module.exports = [
     libConfig,
     libMinConfig,
-    bundleConfig,
-    bundleMinConfig,
+    libWithDepsConfig,
+    libWithDepsMinConfig,
 ];

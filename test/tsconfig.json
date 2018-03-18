@@ -9,6 +9,7 @@
     "noEmitHelpers": false,
     "importHelpers": false,
     "strictPropertyInitialization": false,
+    "inlineSources": false,
     "lib": [
       "es5",
       "es2015.promise",

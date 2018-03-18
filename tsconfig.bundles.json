@@ -5,7 +5,8 @@
     "outDir": "./build/bundles",
     "target": "es5",
     "module": "es2015",
-    "strictFunctionTypes": false
+    "strictFunctionTypes": false,
+    "declaration": false
   },
   "exclude": [
     "./test"

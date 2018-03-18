@@ -3,9 +3,20 @@
   "extends": [
     "tslint:recommended"
   ],
+  "rulesDirectory": [
+    "../node_modules/codelyzer"
+  ],
   "jsRules": {},
-  "rules": {},
-  "rulesDirectory": [],
+  "rules": {
+    "import-blacklist": {
+      "severity": "error",
+      "options": [
+        "rxjs",
+        "rxjs/Rx",
+        "rxjs/operators"
+      ]
+    }
+  },
   "linterOptions": {
     "exclude": [
       "**/*.d.ts"
