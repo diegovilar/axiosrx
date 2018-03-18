@@ -21,13 +21,13 @@
     "prebuild": "rimraf build && tsc -p tsconfig.typings.json",
     "build": "concurrently -n \"esm5,esm2015,bundles\" -c \"green,cyan,magenta\" \"yarn run build-esm5\" \"yarn run build-esm2015\" \"yarn run build-bundles\"",
     "postbuild": "ts-node -P scripts/tsconfig.json scripts/postbuild.ts",
-    "build-esm2015": "rimraf build/esm2015 && tsc -p tsconfig.esm2015.json",
     "build-esm5": "rimraf build/esm5 && tsc -p tsconfig.esm5.json",
+    "build-esm2015": "rimraf build/esm2015 && tsc -p tsconfig.esm2015.json",
     "build-bundles": "rimraf build/bundles && webpack --config webpack.config.js",
     "build-test": "rimraf __test__ && tsc -p test/tsconfig.json",
     "test": "yarn run build-test && mocha --opts mocha.opts",
     "test+coverage": "rimraf coverage && nyc --nycrc-path nyc.json yarn run test",
-    "tslint": "tslint -p src/tsconfig.es5.json -c src/tslint.json --fix"
+    "tslint": "tslint -p tsconfig.esm5.json -c src/tslint.json --fix"
   },
   "devDependencies": {
     "@types/chai": "^4.1.2",

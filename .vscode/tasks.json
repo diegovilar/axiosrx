@@ -4,8 +4,8 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "identifier": "build-all",
-      "label": "Build all",
+      "identifier": "build",
+      "label": "Build project",
       "command": "yarn run build",
       "type": "shell",
       "group": {
@@ -23,72 +23,8 @@
       ]
     },
     {
-      "identifier": "build-es5",
-      "label": "Build ES5",
-      "command": "yarn run build-es5",
-      "type": "shell",
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "problemMatcher": [
-        "$tsc"
-      ]
-    },
-    {
-      "identifier": "build-es6",
-      "label": "Build ES6",
-      "command": "yarn run build-es6",
-      "type": "shell",
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "problemMatcher": [
-        "$tsc"
-      ]
-    },
-    {
-      "identifier": "build-esm",
-      "label": "Build ESM",
-      "command": "yarn run build-esm",
-      "type": "shell",
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "problemMatcher": [
-        "$tsc"
-      ]
-    },
-    {
-      "identifier": "build-browser",
-      "label": "Build browser",
-      "command": "yarn run build-browser",
-      "type": "shell",
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "problemMatcher": [
-        "$tsc"
-      ]
-    },
-    {
       "identifier": "build-test",
-      "label": "Build test",
+      "label": "Build tests",
       "command": "yarn run build-test",
       "type": "shell",
       "group": "build",
@@ -104,7 +40,7 @@
     },
     {
       "identifier": "clean",
-      "label": "Clean",
+      "label": "Clean previous build and caches",
       "command": "yarn run clean",
       "type": "shell",
       "presentation": {
@@ -117,7 +53,7 @@
     },
     {
       "identifier": "test",
-      "label": "Test",
+      "label": "Test project",
       "command": "yarn run test",
       "type": "shell",
       "group": "test",
@@ -133,7 +69,7 @@
     },
     {
       "identifier": "test+coverage",
-      "label": "Test + coverage",
+      "label": "Test project with coverage",
       "command": "yarn run test+coverage",
       "type": "shell",
       "group": "test",
@@ -148,8 +84,8 @@
       ]
     },
     {
-      "identifier": "tslint",
-      "label": "TSLint",
+      "identifier": "lint",
+      "label": "Lint project",
       "command": "yarn run tslint",
       "type": "shell",
       "presentation": {

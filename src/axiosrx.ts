@@ -1,8 +1,8 @@
 import { AxiosError, AxiosInstance, AxiosPromise, CancelStatic, CancelTokenStatic } from "axios";
 import { AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse } from "axios";
 
-import { Observable } from "rxjs/Observable";
 import axiosStatic from "axios";
+import { Observable } from "rxjs/Observable";
 import { merge } from "./utils";
 
 export class AxiosRx {
