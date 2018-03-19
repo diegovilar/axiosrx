@@ -16,7 +16,7 @@
   "es2015": "esm2015/index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "prepublishOnly": "yarn run build && yarn run test",
+    "prepublishOnly": "echo \"Error: Publish the contents of the build directory\" && exit 1",
     "clean": "rimraf build __test__ coverage .nyc_output .awcache node_modules/.cache/hard-source",
     "prebuild": "rimraf build && tsc -p tsconfig.typings.json",
     "build": "concurrently -n \"esm5,esm2015,bundles\" -c \"green,cyan,magenta\" \"yarn run build-esm5\" \"yarn run build-esm2015\" \"yarn run build-bundles\"",
@@ -29,7 +29,8 @@
     "test+coverage": "rimraf coverage && nyc --nycrc-path nyc.json yarn run test",
     "tslint": "tslint -p tsconfig.esm5.json -c tslint.json --fix",
     "prerelease": "yarn run tslint && yarn run build && yarn run test",
-    "release": "yarn version && yarn run postbuild"
+    "release": "yarn version && yarn run postbuild",
+    "postrelease": "echo \">>> Contents of the build directory ready to be published <<<\""
   },
   "devDependencies": {
     "@types/chai": "^4.1.2",

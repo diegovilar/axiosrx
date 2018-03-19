@@ -16,7 +16,7 @@
     "noEmitOnError": true,
     "pretty": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": true,
+    "strictPropertyInitialization": false,
     "esModuleInterop": true,
     "strictFunctionTypes": true, // use on IDE, but disable for builds otherwise many packages (ie. rxjs) won't work
     "alwaysStrict": true,
