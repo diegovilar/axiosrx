@@ -4,6 +4,7 @@
 /.nyc_output
 /coverage
 yarn-error.log
+.yarn-metadata.json
 desktop.ini
 /.awcache
 /*.tgz
