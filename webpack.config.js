@@ -6,6 +6,7 @@ const LIBRARY_GLOBAL_NAME = "";
 
 const libExternals = [
     externalizeRxjs,
+    "axios"
 ];
 
 const libWithDepsExternals = [
