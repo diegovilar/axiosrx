@@ -1,8 +1,0 @@
-{
-  "$schema": "http://json.schemastore.org/tsconfig",
-  "extends": "./tsconfig.esm2015.json",
-  "compilerOptions": {
-    "outDir": "./build",
-    "emitDeclarationOnly": true
-  }
-}

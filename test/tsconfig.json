@@ -8,7 +8,7 @@
     "downlevelIteration": true,
     "noEmitHelpers": false,
     "importHelpers": false,
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": false, // only on TS 2.7+
     "inlineSources": false,
     "lib": [
       "es5",

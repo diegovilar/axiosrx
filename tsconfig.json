@@ -16,9 +16,9 @@
     "noEmitOnError": true,
     "pretty": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": false,
-    "esModuleInterop": true,
-    "strictFunctionTypes": true, // use on IDE, but disable for builds otherwise many packages (ie. rxjs) won't work
+    "strictPropertyInitialization": false, // only on TS 2.7+
+    "esModuleInterop": true,               // only on TS 2.7+
+    "strictFunctionTypes": true,
     "alwaysStrict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -35,6 +35,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "test/**/*.ts"
+    "test/**/*.ts",
+    "typings/**/*.d.ts"
   ]
 }

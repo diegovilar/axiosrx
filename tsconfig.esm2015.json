@@ -5,10 +5,10 @@
     "outDir": "./build/esm2015",
     "target": "es2015",
     "module": "es2015",
-    "downlevelIteration": false,
-    "strictFunctionTypes": false
+    "downlevelIteration": false
   },
   "exclude": [
-    "./test"
+    "./test",
+    "./src/**/*.d.ts"
   ]
 }

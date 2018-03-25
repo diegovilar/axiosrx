@@ -5,10 +5,11 @@
     "outDir": "./build/bundles",
     "target": "es5",
     "module": "es2015",
-    "strictFunctionTypes": false,
+    "downlevelIteration": true,
     "declaration": false
   },
   "exclude": [
-    "./test"
+    "./test",
+    "./src/**/*.d.ts"
   ]
 }

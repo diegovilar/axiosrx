@@ -1,3 +1,2 @@
-# @diegovilar/axiosrx
-
-Axios with Rx.Observables
+# template-typescript-lib-project
+Template for library projects written in TypeScript

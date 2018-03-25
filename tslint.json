@@ -19,8 +19,23 @@
       "severity": "error",
       "options": [
         "rxjs",
+        "rxjs/",
         "rxjs/Rx",
-        "rxjs/operators"
+        "rxjs/Rx/",
+        "rxjs/add/observable",
+        "rxjs/add/observable/",
+        "rxjs/add/operator",
+        "rxjs/add/operator/",
+        "rxjs/symbol",
+        "rxjs/symbol/",
+        "rxjs/scheduler",
+        "rxjs/scheduler/",
+        "rxjs/observable",
+        "rxjs/observable/",
+        "rxjs/operator",
+        "rxjs/operator/",
+        "rxjs/operators",
+        "rxjs/operators/"
       ]
     }
   },

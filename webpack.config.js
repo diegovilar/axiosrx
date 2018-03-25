@@ -1,3 +1,23 @@
+// ----------------------------------------------------------------------------
+// Change things bellow as desired
+// ----------------------------------------------------------------------------
+
+const LIBRARY_GLOBAL_NAME = "";
+
+const libExternals = [
+    externalizeRxjs,
+];
+
+const libWithDepsExternals = [
+    externalizeRxjs,
+];
+
+
+
+// ----------------------------------------------------------------------------
+// Don't change things bellow
+// ----------------------------------------------------------------------------
+
 const project = require("./package.json");
 const clone = require("clone");
 const path = require("path");
@@ -12,18 +32,8 @@ const {
 const TS_CONFIG_FILE = "./tsconfig.bundles.json";
 const ENTRY = "./src/index.ts";
 const OUTPUT_PATH = path.resolve(__dirname, "build/bundles");
-
-const LIBRARY_NAME = project.name.replace(/^@[^\/]+\//g, "").replace(/\//g, "_").toLowerCase();
 const OUTPUT_FILENAME = "lib";
-
-const libExternals = [
-    externalizeRxjs,
-    "axios"
-];
-
-const libWithDepsExternals = [
-    externalizeRxjs
-];
+const LIBRARY_GLOBAL_NAME_AUTO = project.name.replace(/^@[^\/]+\//g, "").replace(/\//g, "_").toLowerCase();
 
 function cloneConfig(source) {
     const result = {};
@@ -61,7 +71,7 @@ const sharedConfig = {
     entry: ENTRY,
     output: {
         path: OUTPUT_PATH,
-        library: LIBRARY_NAME,
+        library: LIBRARY_GLOBAL_NAME || LIBRARY_GLOBAL_NAME_AUTO,
         libraryTarget: "umd"
     },
     devtool: "source-map",
