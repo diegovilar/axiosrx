@@ -2,13 +2,14 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "noEmit": false,
     "outDir": "./build/esm5",
     "target": "es5",
     "module": "es2015",
     "downlevelIteration": true
   },
-  "exclude": [
-    "./test",
-    "./src/**/*.d.ts"
+  "include": [
+    "./src",
+    "./typings/**/*.d.ts"
   ]
 }

@@ -4,14 +4,11 @@
     "tslint:recommended"
   ],
   "rulesDirectory": [
-    "node_modules/codelyzer"
+    "../node_modules/codelyzer"
   ],
   "linterOptions": {
     "exclude": [
-      "./*.ts",
-      "**/*.d.ts",
-      "test/**/*",
-      "scripts/**/*"
+      "**/*.d.ts"
     ]
   },
   "rules": {

@@ -2,14 +2,15 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "noEmit": false,
     "outDir": "./build/bundles",
     "target": "es5",
     "module": "es2015",
     "downlevelIteration": true,
     "declaration": false
   },
-  "exclude": [
-    "./test",
-    "./src/**/*.d.ts"
+  "include": [
+    "./src",
+    "./typings/**/*.d.ts"
   ]
 }

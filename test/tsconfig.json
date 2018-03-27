@@ -2,6 +2,7 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "noEmit": false,
     "target": "es5",
     "module": "commonjs",
     "outDir": "../__test__",
@@ -9,11 +10,11 @@
     "noEmitHelpers": false,
     "importHelpers": false,
     "strictPropertyInitialization": false, // only on TS 2.7+
-    "inlineSources": false,
-    "lib": [
-      "es5",
-      "es2015.promise",
-      "dom"
-    ]
-  }
+    "inlineSources": false
+  },
+  "include": [
+    "./",
+    "../src",
+    "../typings/**/*.d.ts"
+  ]
 }

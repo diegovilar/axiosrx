@@ -86,7 +86,7 @@
     {
       "identifier": "lint",
       "label": "Lint project",
-      "command": "yarn run tslint",
+      "command": "yarn run lint",
       "type": "shell",
       "presentation": {
         "echo": true,

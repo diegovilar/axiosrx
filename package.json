@@ -17,7 +17,7 @@
   "scripts": {
     "prepublishOnly": "echo Error: Publish the contents of the build directory && exit 1",
     "clean": "rimraf build __test__ coverage .nyc_output .awcache node_modules/.cache/hard-source",
-    "prebuild": "rimraf build",
+    "prebuild": "rimraf build && yarn run lint",
     "build": "concurrently -n \"esm5,esm2015,bundles\" -c \"green,cyan,magenta\" \"yarn run build-esm5\" \"yarn run build-esm2015\" \"yarn run build-bundles\"",
     "postbuild": "copyfiles -u 2 \"build/esm2015/**/*.d.ts\" build && ts-node -P scripts/tsconfig.json scripts/postbuild.ts",
     "build-esm5": "rimraf build/esm5 && tsc -p tsconfig.esm5.json",
@@ -29,10 +29,10 @@
     "pretest": "yarn run build-test",
     "test": "mocha --opts mocha.opts",
     "test+coverage": "rimraf coverage && nyc --nycrc-path nyc.json yarn run test",
-    "tslint": "tslint -p tsconfig.esm5.json -c tslint.json --fix",
-    "prerelease": "yarn run tslint && yarn run build && yarn run test",
+    "lint": "tslint -p tsconfig.esm5.json -c src/tslint.json --fix",
+    "prerelease": "yarn run build && yarn run test",
     "release": "yarn version && yarn run postbuild",
-    "postrelease": "echo Contents of the build directory ready to be published"
+    "postrelease": "echo Contents of the \"build\" directory ready to be published"
   },
   "devDependencies": {
     "@types/chai": "^4.1.2",

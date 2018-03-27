@@ -2,6 +2,7 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "outDir": "./build",
+    "noEmit": true,
     "target": "es5",
     "module": "es2015",
     "downlevelIteration": true,
@@ -16,26 +17,19 @@
     "noEmitOnError": true,
     "pretty": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": false, // only on TS 2.7+
-    "esModuleInterop": true,               // only on TS 2.7+
+    "strictPropertyInitialization": true, // only on TS 2.7+
+    "esModuleInterop": true,              // only on TS 2.7+
     "strictFunctionTypes": true,
     "alwaysStrict": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": false,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "newLine": "LF",
     "charset": "utf-8",
     "lib": [
-      "es2015",
-      "es2015.promise",
-      "dom"
+      "es2015"
     ]
-  },
-  "include": [
-    "src/**/*.ts",
-    "test/**/*.ts",
-    "typings/**/*.d.ts"
-  ]
+  }
 }

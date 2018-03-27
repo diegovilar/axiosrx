@@ -1,10 +1,54 @@
-/node_modules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
 /build
-/__test__
-/.nyc_output
-/coverage
-yarn-error.log
+/build-dev
+/debug
+/dist
+/dist-dev
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
 .yarn-metadata.json
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+.settings/
+*.launch
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
 desktop.ini
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
 /.awcache
+/.nyc_output
+/__test__
+/coverage
 /*.tgz
+.ng_pkg_build
+testem.log
